@@ -9,8 +9,6 @@ import { Component } from '@angular/core';
             background: crimson;
             color: white;
             padding: 10px;
-            margin-left: -100%;
-            padding-left: 100%;
         }
         `
     ]

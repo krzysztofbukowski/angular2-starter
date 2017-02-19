@@ -10,8 +10,8 @@
         devtool: 'source-map',
         entry: {
             main: "./src/main.js",
-            vendor: "./src/app/vendor.ts",
-            polyfills: "./src/app/polyfills.ts",
+            vendor: "./src/vendor.ts",
+            polyfills: "./src/polyfills.ts",
         },
 
         output: {
