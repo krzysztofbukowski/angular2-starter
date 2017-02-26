@@ -5,7 +5,7 @@
   "description": "Angular2 starter app with webpack, karma, mocha, chai and sinon",
   "scripts": {
     "test": "karma start",
-    "start": "webpack-dev-server --port 8080",
+    "start": "concurrently --kill-others \"webpack-dev-server --port 8080\" \"karma start\"",
     "build": "webpack -d --colors"
   },
   "license": "ISC",
@@ -17,6 +17,7 @@
     "@types/sinon": "^1.16.35",
     "awesome-typescript-loader": "^3.0.4",
     "chai": "^3.5.0",
+    "concurrently": "^3.3.0",
     "html-webpack-plugin": "^2.28.0",
     "karma": "^1.4.1",
     "karma-chai": "^0.1.0",
