@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Sun Feb 19 2017 15:02:28 GMT+0000 (GMT)
-
+const webpackConfig = require('./webpack.test.config');
 module.exports = function(config) {
   config.set({
 
@@ -10,13 +10,16 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai', 'sinon'],
 
 
     // list of files / patterns to load in the browser
     files: [
-    //   'src/**/*.js',
-      'src/**/*.spec.js',
+        './test.shim.js',
+        // 'src/polyfills.ts',
+        // 'src/vendor.ts',
+        // 'src/**/*.ts',
+        // 'src/**/*.spec.ts',
     ],
 
 
@@ -28,14 +31,26 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        './test.shim.js' : ['webpack', 'sourcemap']
+        // 'src/**/*.spec.ts': ['webpack', 'sourcemap'],
+        // 'src/**/*.js': ['coverage'],
+        // 'src/polyfills.ts': ['webpack'],
+        // 'src/vendor.ts': ['webpack']
     },
+
+    webpack : webpackConfig,
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'mocha', 'coverage'],
 
+    coverageReporter: {
+        type: 'html',
+        dir: 'coverage/',
+        subdir: '.'
+    },
 
     // web server port
     port: 9876,
@@ -47,7 +62,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -56,7 +71,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS', 'Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

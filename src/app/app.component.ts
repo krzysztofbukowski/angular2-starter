@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'angular2-webpack-app',
-    template: '<h1 class="title">Hello Angular 2 with webpack</h1>',
+    template: '<h1 class="title">Hello Angular 2 with webpack!!</h1>',
     styles: [`
         .title {
             font-family: Lato;

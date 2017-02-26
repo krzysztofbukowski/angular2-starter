@@ -1,3 +1,4 @@
+
 /*jshint esversion: 6 */
 (function() {
     "use strict";
@@ -9,7 +10,7 @@
     module.exports = {
         devtool: 'source-map',
         entry: {
-            main: "./src/main.js",
+            main: "./src/main.ts",
             vendor: "./src/vendor.ts",
             polyfills: "./src/polyfills.ts",
         },
@@ -31,7 +32,7 @@
                     loaders: [{
                         loader: 'awesome-typescript-loader',
                         options: {
-                            configFileName: 'src/tsconfig.json'
+                            configFileName: __dirname + '/src/tsconfig.json'
                         }
                     }]
                 },
