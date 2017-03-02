@@ -7,6 +7,6 @@ describe('AppComponent', () => {
 
     it ('should create an instance of AppComponent', () => {
         let fixture = TestBed.createComponent(AppComponent);
-        // expect(fixture.componentInstance).to.be.instanceOf(AppComponent);
+        expect(fixture.componentInstance).to.be.instanceOf(AppComponent);
     });
 });

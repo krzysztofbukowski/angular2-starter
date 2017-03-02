@@ -16,40 +16,28 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         './test.shim.js',
-        // 'src/polyfills.ts',
-        // 'src/vendor.ts',
-        // 'src/**/*.ts',
-        // 'src/**/*.spec.ts',
-    ],
-
-
-    // list of files to exclude
-    exclude: [
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './test.shim.js' : ['webpack', 'sourcemap']
-        // 'src/**/*.spec.ts': ['webpack', 'sourcemap'],
-        // 'src/**/*.js': ['coverage'],
-        // 'src/polyfills.ts': ['webpack'],
-        // 'src/vendor.ts': ['webpack']
+        './test.shim.js' : ['webpack', 'sourcemap'],
+        './src/**/*.ts': ['coverage']
     },
 
     webpack : webpackConfig,
 
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'mocha', 'coverage'],
+    reporters: ['mocha', 'coverage', 'remap-coverage'],
 
     coverageReporter: {
-        type: 'html',
-        dir: 'coverage/',
-        subdir: '.'
+        type: 'in-memory'
+    },
+
+    remapCoverageReporter: {
+        'text-summary': null,
+        html: './coverage/html'
     },
 
     // web server port
