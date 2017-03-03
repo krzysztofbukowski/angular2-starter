@@ -15,4 +15,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+    /**
+     * Returns the component's name
+     *
+     * @returns {string}
+     */
+    getName(): string {
+        return 'AppComponent';
+    }
 }

@@ -1,73 +1,75 @@
 // Karma configuration
 // Generated on Sun Feb 19 2017 15:02:28 GMT+0000 (GMT)
 const webpackConfig = require('./webpack.test.config');
-module.exports = function(config) {
-  config.set({
+module.exports = function (config) {
+    config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai', 'sinon'],
+        // base path that will be used to resolve all patterns (eg. files, exclude)
+        basePath: './',
 
 
-    // list of files / patterns to load in the browser
-    files: [
-        './test.shim.js',
-    ],
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        frameworks: ['mocha', 'chai', 'sinon', 'source-map-support'],
 
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-        './test.shim.js' : ['webpack', 'sourcemap'],
-        './src/**/*.ts': ['coverage']
-    },
+        // list of files / patterns to load in the browser
+        files: [
+            'test.shim.js',
+        ],
 
-    webpack : webpackConfig,
+        exclude: [
+            'node_modules/angular2/**/*_spec.js',
+        ],
 
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: {
+            'test.shim.js': ['webpack', 'sourcemap'],
+        },
 
-    coverageReporter: {
-        type: 'in-memory'
-    },
+        webpack: webpackConfig,
 
-    remapCoverageReporter: {
-        'text-summary': null,
-        html: './coverage/html'
-    },
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['mocha', 'karma-remap-istanbul' ],
 
-    // web server port
-    port: 9876,
+        remapIstanbulReporter: {
+            remapOptions: {}, //additional remap options
+            reportOptions: {}, //additional report options
+            reports: {
+                lcovonly: 'coverage/lcov.info',
+                html: 'coverage/html/report'
+            }
+        },
 
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+        // web server port
+        port: 9876,
 
 
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
 
 
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
 
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
+
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
+
+
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        browsers: ['PhantomJS'],
+
+
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        singleRun: false,
+
+        // Concurrency level
+        // how many browser should be started simultaneous
+        concurrency: Infinity
+    })
 }

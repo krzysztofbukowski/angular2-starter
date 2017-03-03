@@ -9,4 +9,12 @@ describe('AppComponent', () => {
         let fixture = TestBed.createComponent(AppComponent);
         expect(fixture.componentInstance).to.be.instanceOf(AppComponent);
     });
+
+    describe('getName', () => {
+        it('should return component\'s name', () => {
+            let fixture = TestBed.createComponent(AppComponent);
+            expect(fixture.componentInstance.getName()).to.be.eql('AppComponent');
+        });
+    });
+
 });
