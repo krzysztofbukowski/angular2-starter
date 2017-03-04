@@ -1,14 +1,29 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'angular2-webpack-app',
-    template: '<h1 class="title">Hello Angular 2 with webpack!!</h1>',
+    template: `
+<h1 class='title'>Hello Angular 2!</h1>
+<p class='packages'>{{ '{' }}
+   webpack,
+   karma,
+   mocha,
+   sinon,
+   chai    
+}</p>
+`,
     styles: [`
         .title {
             font-family: Lato;
             background: crimson;
             color: white;
             padding: 10px;
+        }
+        
+        .packages {
+            font-size: 2em;
+            font-family: monospace;
+            white-space: pre;
         }
         `
     ]
