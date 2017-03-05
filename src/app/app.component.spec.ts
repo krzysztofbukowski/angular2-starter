@@ -1,11 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {PackagesComponent} from "./packages.component";
 describe('AppComponent', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({ declarations: [AppComponent]});
+    beforeEach((done) => {
+        TestBed.configureTestingModule({
+            declarations: [
+                AppComponent,
+                PackagesComponent
+            ]
+        }).compileComponents().then(() => {
+            done();
+        }).catch((e) => {
+            done();
+        });
     });
 
-    it ('should create an instance of AppComponent', () => {
+    it('should create an instance of AppComponent', () => {
         let fixture = TestBed.createComponent(AppComponent);
         expect(fixture.componentInstance).to.be.instanceOf(AppComponent);
     });

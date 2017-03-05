@@ -5,6 +5,7 @@
 
     const
         webpack = require('webpack'),
+        path = require('path'),
         HtmlWebpackPlugin = require('html-webpack-plugin');
 
     module.exports = {
@@ -19,22 +20,29 @@
             path: __dirname + "/dist",
             filename: "[name].js",
             publicPath: "/",
-            // sourceMapFilename: "[name].js.map"
         },
 
         resolve: {
-            extensions: ['.ts', '.js', '.map.js']
+            extensions: ['.ts', '.js']
         },
 
         module: {
-            rules: [{
+            rules: [
+                {
                     test: /\.ts$/,
-                    loaders: [{
-                        loader: 'awesome-typescript-loader',
-                        options: {
-                            configFileName: __dirname + '/src/tsconfig.json'
-                        }
-                    }]
+                    loaders: [
+                        {
+                            loader: 'awesome-typescript-loader',
+                            options: {
+                                configFileName: __dirname + '/src/tsconfig.json'
+                            }
+                        },
+                        'angular2-template-loader'
+                    ]
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'html-loader'
                 },
             ]
         },
@@ -51,6 +59,13 @@
             new webpack.optimize.CommonsChunkPlugin({
                 name: ['main', 'vendor', 'polyfills']
             }),
-        ]
+        ],
+
+        devServer: {
+            contentBase: path.join(__dirname, "dist"),
+            compress: true,
+            port: 8080
+        },
+
     };
 })();

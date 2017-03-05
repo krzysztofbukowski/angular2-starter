@@ -23,7 +23,8 @@
                             options: {
                                 configFileName: __dirname + '/src/tsconfig.test.json'
                             }
-                        }
+                        },
+                        'angular2-template-loader'
                     ],
                 },
                 {
@@ -32,7 +33,11 @@
                     exclude: /\.spec.ts$/,
                     use: 'istanbul-instrumenter-loader',
                     enforce: "post"
-                }
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'html-loader'
+                },
             ]
         },
     };
