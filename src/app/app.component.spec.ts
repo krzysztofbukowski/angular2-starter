@@ -1,12 +1,19 @@
 import {TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {PackagesComponent} from "./packages.component";
+
 describe('AppComponent', () => {
     beforeEach((done) => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
                 PackagesComponent
+            ],
+            providers: [
+                {
+                    provide: 'appConfig',
+                    useValue: {}
+                }
             ]
         }).compileComponents().then(() => {
             done();
